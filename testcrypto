@@ -1,0 +1,28 @@
+package com.demo.real.assignment1;
+
+import java.util.Scanner;
+
+public class TestCrypto {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Crypto crypto = new Crypto();
+        System.out.print("Enter your text: ");
+        String input = sc.nextLine();
+
+        System.out.println("\n=====Normalize Text=====");
+        input = crypto.normalizeText(input);
+        System.out.println(input + "\n");
+
+        System.out.println("=====Obified Text=====");
+        input = crypto.obifyText(input);
+        System.out.println(input + "\n");
+
+        System.out.println("=====Caesarified Text=====");
+        input = crypto.caesarify(input, 4);
+        System.out.println(input + "\n");
+
+        System.out.println("=====Groupified Text=====");
+        input = crypto.groupify(input, 3);
+        System.out.println(input + "\n");
+    }
+}
