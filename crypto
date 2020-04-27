@@ -1,0 +1,130 @@
+package com.demo.real.assignment1;
+
+public class Crypto {
+    public String normalizeText(String text) {
+        // Replace all the charecters with empty string except alphabets
+        text = text.replaceAll("[^a-zA-Z]", "");
+        //Convert to upper case
+        return text.toUpperCase();
+    }
+
+    public String obifyText(String text){
+        // JAVAISFUN => JOBAVOBAOBISFOBUN
+        String result = "";
+
+        Character[] vowels = {'A', 'I', 'U', 'E', 'O'};
+        // Iterate char by char
+        for (int i = 0; i< text.length(); i++){ // for loop
+            // Iterate vowel in vowels array
+            for(char vowel : vowels) { // For Loop
+                // Compare with tha char in vowels array
+                if (text.charAt(i) == vowel){
+                    result += "OB"; // Insert OB infront
+                    break;
+                }
+            }
+            result += text.charAt(i);
+        }
+        return result;
+    }
+
+    public String caesarify(String text, int shiftValue){
+        //Java is Fun! => JAVAISFUN => JOBAVOBAOBISFOBUN
+        // Shift it by 2 letters
+        // J => L (K, L)
+        // O => Q (P, Q)
+        // B => D (C, D)
+        // A => C (B, C)
+        // JOBAVOBAOBISFOBUN => LQDCXQDCQDKUHQDWP
+
+        // Z - A, B
+        // A - Z, Y - Negative Shift
+        //35 = 26  +9
+
+        shiftValue %= 26;
+        String result = "";
+        int charAscii;
+
+        //Iterate char by char
+        for(int i = 0; i < text.length(); i++){ // For Loop
+            charAscii = text.charAt(i) + shiftValue;
+
+            //compare with upper boundary (Z) and minus 26
+            if(charAscii > 90)
+                charAscii -= 26;
+                //compare with lower boundary (A) and plus 26
+            else if (charAscii < 65)
+                charAscii += 26;
+
+
+            result += (char) charAscii;
+        }
+        return result;
+    }
+
+    public String groupify(String text, int groupValue){
+        // LQDCXQDCQDKUHQDWP
+        // Group by 3 characters
+        // Any missing letters in the group should be patch with x
+        // LQD CXQ DCQ DKU HQD WPx
+        // 14 % 3 = 2 => x
+        // 25 % 6 = 1 => xxxxx (6 - 1)
+        // 25 % 5 = 0
+
+        String result = "";
+        int remainder;
+
+        // 11 % 3 = 2 => 3 - 2 => x
+        // Identify & patch the missing characters in the last group
+
+        remainder = text.length() % groupValue; // Results the number of character
+        // in the last group
+        while ((remainder < groupValue) && remainder > 0){
+            text += "x"; // Patch it with 'x'
+            remainder++;
+        }
+
+        //Take sub string based on the group value
+        for(int i = 0; i < text.length(); i+=groupValue) {
+            result += text.substring(i, i+groupValue) + " ";
+        }
+
+        return result;
+    }
+
+    public String encryptString(String text, int shiftValue, int groupValue){
+        // Normalize
+        // Obify
+        // caesarify
+        // groupify
+        text = normalizeText(text);
+        text = obifyText(text);
+        text = caesarify(text, shiftValue);
+        text = groupify(text, groupValue);
+        // return groupify(caesarify(obifyText(normilizeText(text)), shiftValue), groupValue);
+        return text;
+    }
+
+    public String decryptString(String text, int shiftValue){
+        text = ungroupify(text); // remove white space and x
+        System.out.println(text);
+        text = caesarify(text, shiftValue*-1);
+        System.out.println(text);
+        text = unobify(text); // remove all OB
+        return text;
+    }
+
+    public String ungroupify(String text) {
+        text = text.replaceAll("[x ]", "");
+        return text;
+    }
+
+    public String unobify (String text){
+        text = text.replaceAll("OBA", "A");
+        text = text.replaceAll("OBI", "I");
+        text = text.replaceAll("OBU", "U");
+        text = text.replaceAll("OBE", "E");
+        text = text.replaceAll("OBO", "O");
+        return text;
+    }
+}
