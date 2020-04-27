@@ -1,0 +1,81 @@
+package day1.day1;
+
+import java.util.Scanner;
+
+public class SumOfTwoNumbers {
+    public static void main(String[] args) {
+        // Get two numbers from the console
+        // How to get the input?
+        // Using scanner object
+        // declare the scanner object first
+        // Creating an object/ instance - Instantiation
+        int loop = 0;
+
+        do {
+            System.out.println("Enter your number 1 - ");
+            Scanner input = new Scanner(System.in);
+            int num1 = input.nextInt();
+
+            System.out.println("You have entered ");
+            System.out.println(num1);
+            System.out.println("Enter your number 2 - ");
+            int num2 = input.nextInt();
+            System.out.println("You have entered");
+            System.out.println(num2);
+
+            //Calculating the sum of two numbers and print the result
+            int sum = num1 + num2;
+            System.out.println("Sum of two numbers");
+            System.out.println(sum);
+
+            // How to minimise the sout
+            // By using String Concatenation
+            // + is the concatenation operator
+            System.out.println("Sum of two numbers " + sum);
+            loop++;
+        } while (loop < 2);
+
+        int sumUpUsingMethod;
+        sumUpUsingMethod = calculateSum(5,6); //Calling method
+                                               // 5, 6 - Arguments,
+                                                // The values passed for the parameters
+        System.out.println("Sum = " +sumUpUsingMethod);
+
+        while (loop < 2) {
+            System.out.println("Loop value = " + loop);
+            System.out.println(" While loop code block get excuted ");
+            loop ++;
+        }
+
+        sumUpUsingMethod = calculateSum(8, 9);
+        System.out.println("Sum = " +sumUpUsingMethod);
+
+        calculateProduct(8,9);
+
+        /*
+        System.out.println("Sum of " + num1 + " and " + num2 + " equals "  + sum);
+       // %d - Integer, Short, long
+        //%f - float, double
+        //%s - String values
+        //\n - new line character - Carriage Return and Line Feed (CRLF)
+        System.out.printf("Sum of %d and %d equals %d\n", num1, num2, sum );
+
+        double dblSum = 4.5 +  3.75;
+        System.out.printf("Sum of 4.5 and 3.75 equals %f\n", dblSum );
+
+        System.out.printf("Sum of 4.5 and 3.75 equals %.1f", dblSum );*/
+    }
+
+    // Method to calculate the sum of two numbers
+    // Input - 2 numbers (int) => Parameters of the method
+    // Output - Sum (int) => Return (Return type)
+    private static int calculateSum(int p1, int p2){
+        int sum = p1 + p2;
+        return sum;
+    }
+    // Process the logic
+    // Return nothing - Return type will be void
+    private static void calculateProduct(int p1, int p2){
+        System.out.printf("Product of %d and %d = %d", p1, p2, p1*p2);
+    }
+}
