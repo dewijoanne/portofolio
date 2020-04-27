@@ -1,0 +1,19 @@
+package com.bootcamp.day3;
+
+public class StaticDemo {
+    static String myStaticVariable  = "My Static Variable";
+    private String myPrivateVariable = "My Private Variable";
+    public String myPublicVariable = "My Public Variable";
+
+    public String getMyPrivateVariable() {
+        return myPrivateVariable;
+    }
+
+    public static void myStaticMethod(){
+        System.out.println ("Called static method");
+    }
+
+    public void myMethod(){
+        System.out.println ("Called non-static method");
+    }
+}
