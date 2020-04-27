@@ -1,0 +1,14 @@
+package day1.day1;
+
+public class UnaryOperators {
+    public static void main(String[] args) {
+        int value = 5;
+        // Post decrement value--
+        // the value get affected after the execution
+        System.out.println(value--); // 5 after execution it becomes 4
+        System.out.println(value); // 4
+        // Pre decrement --value
+        // value get affected before executing the line
+        System.out.println(--value); // 4 becomes 3
+        System.out.println(value); // 3
+    }
