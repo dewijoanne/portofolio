@@ -1,0 +1,10 @@
+package day1.day1;
+
+public class Main { //Class declaration - comment -Single line comment
+
+    public static void main(String[] args) { // Entry point of the command line app
+        //write your code here
+        System.out.println("Hello World");
+
+    }
+}
